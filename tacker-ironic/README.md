@@ -1,10 +1,10 @@
 ## setup tacker-ironic devstack
 
-Install pyremotevbox before run stack.sh, or will ends failure !
+NOTICE: Install `pyremotevbox` before run stack.sh, or will ends failure !
 
 ## windows virtualbox webSrv
 
-web: http://10.108.125.193:18084
+ip: 10.0.2.2 port: 18083
 
 ## ironic usage
 
