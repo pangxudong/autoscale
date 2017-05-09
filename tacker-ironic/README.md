@@ -1,6 +1,10 @@
 ## setup tacker-ironic devstack
 
-NOTICE: Install `pyremotevbox` before run stack.sh, or will ends failure !
+ref: <https://docs.openstack.org/developer/ironic/mitaka/drivers/vbox.html>
+
+NOTICE: 
++ Install `pyremotevbox` before run stack.sh, or will ends failure !
++ restart all neutron service, other than only q-agt, or will can't create net.
 
 ## windows virtualbox webSrv
 
