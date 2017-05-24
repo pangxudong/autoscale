@@ -1,10 +1,10 @@
 ## Bare Metal AutoScaling Logic
 
 ### Modules: 
-＋ Workload
-＋ StaticTaskScheduler 
-＋ Predictor 
-＋ autoscalingController
++ Workload
++ StaticTaskScheduler 
++ Predictor 
++ autoscalingController
 
 ### workload
 zabbix-items:
