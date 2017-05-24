@@ -14,8 +14,8 @@
 + mem_usage
 
 ### workload公式
-workload = SUM(zabbix-items * priority）
-metalNums = workload2metal(workload)
+`workload = SUM(zabbix-items * priority）
+metalNums = workload2metal(workload)`
 
 ### Crontab
 + StaticTaskScheduler： 根据static policy随机配置
