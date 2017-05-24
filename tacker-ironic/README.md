@@ -1,4 +1,4 @@
-##  Bare Metal AutoScaling Based On OpenStack Tacker
+##  Bare Metal AutoScaling Based On OpenStack Ironic
 
 
 ### setup tacker-ironic devstack
