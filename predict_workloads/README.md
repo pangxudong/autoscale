@@ -1,5 +1,8 @@
 ##  Workloads Prediction
 
+### Environment
+- Server: HPE ProLiant DL380 Gen9 Server
+- OS:  CentOS7
 
 ### data
 
