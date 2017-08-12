@@ -1,3 +1,4 @@
 ## HA
 High Availability
 
+### Raft
