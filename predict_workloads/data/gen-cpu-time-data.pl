@@ -45,6 +45,9 @@ my $jobs;
 my $procs;
 my $nodes;
 
+
+open(my $fh, '>', 'cpu.dat');
+
 #
 # scan trace and collect job info
 #
@@ -58,26 +61,26 @@ while (<>) {
     #
     if (/^\s*$|^;/) {
 
-	# maintain data about log start time
-	if (/^;\s*UnixStartTime:\s*(\d+)\s*$/) {
-	    $start = $1;
-	}
-	if (/^;\s*TimeZoneString:\s*([\w\/]+)\s*$/) {
-	    $ENV{TZ} = $1;
-	    POSIX::tzset();
-	}
-	# about jobs
-	if (/^;\s*MaxJobs:\s*(\d+)\s*$/) {
-	    $jobs = $1;
-	    printf(STDERR "there are $jobs jobs\n");
-	}
-	# and about system size
-	if (/^;\s*MaxProcs:\s*(\d+)\s*$/) {
-	    $procs = $1;
-	}
-	if (/^;\s*MaxNodes:\s*(\d+)\s*$/) {
-	    $nodes = $1;
-	}
+    # maintain data about log start time
+    if (/^;\s*UnixStartTime:\s*(\d+)\s*$/) {
+        $start = $1;
+    }
+    if (/^;\s*TimeZoneString:\s*([\w\/]+)\s*$/) {
+        $ENV{TZ} = $1;
+        POSIX::tzset();
+    }
+    # about jobs
+    if (/^;\s*MaxJobs:\s*(\d+)\s*$/) {
+        $jobs = $1;
+        printf(STDERR "there are $jobs jobs\n");
+    }
+    # and about system size
+    if (/^;\s*MaxProcs:\s*(\d+)\s*$/) {
+        $procs = $1;
+    }
+    if (/^;\s*MaxNodes:\s*(\d+)\s*$/) {
+        $nodes = $1;
+    }
 
         next;
     }
@@ -90,70 +93,70 @@ while (<>) {
 
     my @fields = split(/\s+/,$line);
     if ($#fields != 17) {
-	warn "bad format at $line";
-	$cnt_fmt++;
+    warn "bad format at $line";
+    $cnt_fmt++;
     }
 
     # or alternatively
     my ($job, $sub, $wait, $t, $p, $cpu, $mem, $preq, $treq, $mreq,
-	$status, $u, $gr, $app, $q, $part, $prec, $think) = split(/\s+/,$line);
+    $status, $u, $gr, $app, $q, $part, $prec, $think) = split(/\s+/,$line);
 
     # show progress...
     if ($job % 1000 == 0) {
-	printf(STDERR "\rdid job $job...");
+    printf(STDERR "\rdid job $job...");
     }
 
     #
     # skip if this job is not meaningful
     #
     if ( ! ($job =~ /^\s*\d/)) {
-	# not a job at all -- line does not start with job ID.
-	$cnt_fmt++;
-	next;
+    # not a job at all -- line does not start with job ID.
+    $cnt_fmt++;
+    next;
     }
 
     if ($t == 0) {
-	# someting potentially fishy, as job took 0 time.
-	# but this can also be a resolution problem.
-	$cnt_t0++;
-	#next;
+    # someting potentially fishy, as job took 0 time.
+    # but this can also be a resolution problem.
+    $cnt_t0++;
+    #next;
     }
 
     if ($p == 0) {
-	# someting really fishy: job did not use any processors.
-	# could mean job was cancelled before running.
-	$cnt_p0++;
-	next;
+    # someting really fishy: job did not use any processors.
+    # could mean job was cancelled before running.
+    $cnt_p0++;
+    next;
     }
 
     if (($sub == -1) || ($t == -1) || ($p == -1)) {
-	# something very fishy: job arrival, runtime, or processors undefined.
-	$cnt_bad++;
-	next;
+    # something very fishy: job arrival, runtime, or processors undefined.
+    $cnt_bad++;
+    next;
     }
 
     if ($status != 1) {
-	# another fishy:
-	# job failed (status 0)
-	# job was cancelled (status 5)
-	# or job is only part of a whole job (status 2, 3, 4)
-	$cnt_stat++;
-	next;
+    # another fishy:
+    # job failed (status 0)
+    # job was cancelled (status 5)
+    # or job is only part of a whole job (status 2, 3, 4)
+    $cnt_stat++;
+    next;
     }
 
     # example of parsing submit time
     $sub += $start;
     my ($sec,$min,$hr,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($sub);
     $year += 1900;
-    $mon += 1;	# $mon is 0-based for use as index to array; add 1 to get month number
-    $wday += 1;	# also 0-based, add 1 to get day number
+    $mon += 1;  # $mon is 0-based for use as index to array; add 1 to get month number
+    $wday += 1; # also 0-based, add 1 to get day number
 
     # example of printing submit, processors, and runtime about first 10 jobs
     if ($job <= 10) {
-	printf("%s %3d %5d\n",
-	       strftime("%d/%m/%y-%H:%M:%S", localtime($sub)),
-	       $p, $t
-	      );
+    printf("%s %3d %5d\n",
+           strftime("%d/%m/%y-%H:%M:%S", localtime($sub)),
+           $p, $t
+          );
     }
 
     #
@@ -161,13 +164,15 @@ while (<>) {
     #
 
     # your code here...
-    printf(STDOUT "$cpu\n");
+    print $fh ($cpu . " ");
 
 }
+close $fh;
+print "\ngen cpu data done\n";
 
-# printf(STDERR "\n");
-# printf(STDERR "$cnt_fmt lines had a bad format\n");
-# printf(STDERR "$cnt_t0 jobs had 0 time\n");
-# printf(STDERR "$cnt_p0 jobs had 0 processors\n");
-# printf(STDERR "$cnt_stat jobs had non-1 status\n");
-# printf(STDERR "$cnt_bad jobs had bad data (undefined arrival, runtime, or processors)\n");
+printf(STDERR "\n");
+printf(STDERR "$cnt_fmt lines had a bad format\n");
+printf(STDERR "$cnt_t0 jobs had 0 time\n");
+printf(STDERR "$cnt_p0 jobs had 0 processors\n");
+printf(STDERR "$cnt_stat jobs had non-1 status\n");
+printf(STDERR "$cnt_bad jobs had bad data (undefined arrival, runtime, or processors)\n");
