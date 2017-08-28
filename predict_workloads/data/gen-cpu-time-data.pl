@@ -167,6 +167,7 @@ while (<>) {
     print $fh ($cpu . " ");
 
 }
+print $fh "\n";
 close $fh;
 print "\ngen cpu data done\n";
 
