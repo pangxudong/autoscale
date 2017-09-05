@@ -8,5 +8,7 @@
 
 ref: <http://www.cloudbus.org/workloads.html>
 
+standard workload format: <http://www.cs.huji.ac.il/labs/parallel/workload/swf.html>
+
 ### algorithm
 
