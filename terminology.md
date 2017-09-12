@@ -8,3 +8,6 @@ ref: (https://codingbee.net/tutorials/aws/aws-csa-associate/aws-placement-groups
 ## affinity
 ref:(http://www.chinacloud.cn/show.aspx?id=23762&cid=12)
 
+## 调度
+
+## workload
