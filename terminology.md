@@ -1,7 +1,7 @@
 ## autoscaling group 
 
 
-##placement group
+## placement group
 ref: (https://codingbee.net/tutorials/aws/aws-csa-associate/aws-placement-groups)
 
 AWS terminology: A placement group  is a cluster of instances that are all in the same AZ. These instances have 10 Gbps networks and they  need to have the “Enhanced Networking” feature. 
