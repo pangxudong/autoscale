@@ -14,6 +14,13 @@
 ref: https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D
 http://blog.csdn.net/cm_cyj_1116/article/details/53518790
 
+
+### 数据结构
+
+- Server : ID, coreNum, status, workload
+- ASG : workType, serverList
+- Job : workType, runTime, (参考standard workload format)
+
 ### 基于预测的分配
 
 ### 时间序列
