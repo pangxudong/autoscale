@@ -36,6 +36,8 @@ CPU负载:显示的是一段时间内正在使用和等待使用CPU的平均任�
 
 每个内核的负载为1，并不能算是一种理想状态！这意味着我们的CPU一直很忙，不得清闲。网上有说理想的状态是每个内核的负载为0.7左右，我比较赞同，0.7乘以内核数，得出服务器理想的CPU负载。
 
+英文解释: CPU workload indicates the number of instructions being executed by the processor during a given period or at a particular instant of time. 
+
 ### Standard Workload Format
 ref:  http://www.cs.huji.ac.il/labs/parallel/workload/swf.html
 
