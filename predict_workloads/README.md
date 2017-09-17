@@ -12,3 +12,4 @@ standard workload format: <http://www.cs.huji.ac.il/labs/parallel/workload/swf.h
 
 ### algorithm
 
+ARIMA: AR  MA
