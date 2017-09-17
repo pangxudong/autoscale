@@ -41,14 +41,11 @@ ref:  http://www.cs.huji.ac.il/labs/parallel/workload/swf.html
 
 这里是通过所执行job相关的属性对workload进行描述的，下面是本次实验我比较关注的一些属性：
 
-The Data Fields
-
-5. Number of Allocated Processors -- an integer. In most cases this is also the number of processors the job uses;
-
+The Data Fields <br>
+5. Number of Allocated Processors -- an integer. In most cases this is also the number of processors the job uses; <br>
 6. Average CPU Time Used -- both user and system, in seconds. This is the average over all processors of the CPU time used, and may therefore be **smaller than the wall clock** runtime.
 
-Header Comments
-
+Header Comments  <br>
 2. Computer: Brand and model of computer
 
 ps. 我在想是不是通过主机的品牌，结合data fields中的cpu时间，可以判断workload ?
