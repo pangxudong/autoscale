@@ -6,20 +6,22 @@
 类似情况于操作系统中的**动态分区分配**, 这种分配不预设分区的数目和大小，而是在作业装入内存时，根据作业的大小动态建立分区，使分区大小满足作业的需要。
 
 分区分配算法：
-- 首次适应
-- 循环首次适应
-- 最佳适应
-- 最坏适应
+- 首次适应（first-fit）
+- 循环首次适应（next_fit）
+- 最佳适应（best-fit）
+- 最坏适应（worst-fit）
 
 ref: https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D
 http://blog.csdn.net/cm_cyj_1116/article/details/53518790
 
 
+ps. 从池中把裸机分配给ASG，相当于这里的把内存分区分给JOB
+
 ### 数据结构
 
 - Server : ID, coreNum, status, workload
-- ASG : workType, serverList
-- Job : workType, runTime, (参考standard workload format)
+- ASG : ID, type, serverList
+- Job : ID, type, runTime, (参考standard workload format)
 
 ### 基于预测的分配
 
