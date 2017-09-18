@@ -20,7 +20,7 @@ ps. 从池中把裸机分配给ASG，相当于这里的把内存分区分给JOB
 ### 数据结构
 
 - Server : ID, coreNum, status, workload
-- ASG : ID, type, serverList
+- ASG : ID, type, servers
 - Job : ID, type, runTime, (参考standard workload format)
 
 ### 基于预测的分配

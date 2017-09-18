@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 
-
 class Server:
     def __init__(self, ID, status, core):
+        # status:  0: POWEROFF  1:POWERON 2:DEPLOY 3:RELEASE
         self.ID = ID
         self.status = status
         self.core = core
