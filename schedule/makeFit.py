@@ -24,7 +24,10 @@ if __name__ == '__main__':
     asgs = shuffle_asg(ASG_NUM)
     servers = shuffle_server(SERVER_NUM)
 
+    asgs[0].servers = servers
 
+    print STATUS[0]
+    print PROCESSOR[0]
 
-    # for server in asgs.get_server_by_status(1):
-    #     print server
+    for server in asgs[0].get_server_by_status(0):
+        print server
