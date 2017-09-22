@@ -5,6 +5,8 @@ from server import *
 from asg import *
 
 
+
+
 def first_fit(job_name, job_size):
     global NEXT_FIT_NEXT
     # for one_mem in MEM_ALLO:
@@ -29,5 +31,5 @@ if __name__ == '__main__':
     print STATUS[0]
     print PROCESSOR[0]
 
-    for server in asgs[0].get_server_by_status(0):
-        print server
+    # for server in asgs[0].get_server_by_status(0):
+    #     print server

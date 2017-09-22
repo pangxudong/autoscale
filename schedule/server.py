@@ -1,6 +1,10 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import random
+# import time
+# import sched
+# scheduler = sched.scheduler(time.time, time.sleep)
+
 
 STATUS = {0: "OFF", 1: "ON", 2: "EMPTY"}
 PROCESSOR = [2, 4, 8, 16]
@@ -21,6 +25,9 @@ class Server:
             info += key + "=" + str(self.__dict__[key]) + " "
         return "SERVER-" + str(self.ID) + ": " + info
 
+    def change_status(self, status):
+        self.status = status
+
     def get_workload(self):
         return self.core * 10
 
@@ -30,6 +37,8 @@ class Server:
     def do_poweron(self):
         # self.status = 0
         print "poweron..."
+        # scheduler.enter(2, 1, self.change_status, (STATUS[1], ))
+        # print "status.on"
 
     def do_poweroff(self):
         print "poweroff..."
