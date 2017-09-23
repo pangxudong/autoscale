@@ -1,13 +1,14 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import random
-# import time
-# import sched
-# scheduler = sched.scheduler(time.time, time.sleep)
+import time
+import sched
+scheduler = sched.scheduler(time.time, time.sleep)
 
-
+# static
 STATUS = {0: "OFF", 1: "ON", 2: "EMPTY"}
 PROCESSOR = [2, 4, 8, 16]
+ACTION = {0: "POWEROFF", 1: "POWERON", 2: "DEPLOY", 3: "RELEASE"}
 
 
 class Server:
@@ -25,23 +26,24 @@ class Server:
             info += key + "=" + str(self.__dict__[key]) + " "
         return "SERVER-" + str(self.ID) + ": " + info
 
-    def change_status(self, status):
-        self.status = status
-
     def get_workload(self):
         return self.core * 10
 
     def get_performance(self):
         return self.core * 10
 
+    def change_status(self, status):
+        self.status = status
+
     def do_poweron(self):
-        # self.status = 0
-        print "poweron..."
-        # scheduler.enter(2, 1, self.change_status, (STATUS[1], ))
-        # print "status.on"
+        print "poweron..."+str(self.ID)
+        scheduler.enter(2, 1, self.change_status, (STATUS[1], ))
+        scheduler.run()
 
     def do_poweroff(self):
-        print "poweroff..."
+        print "poweroff..."+str(self.ID)
+        scheduler.enter(2, 1, self.change_status, (STATUS[0],))
+        scheduler.run()
 
     def do_deploy(self):
         print "deploying..."

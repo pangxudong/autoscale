@@ -4,7 +4,7 @@
 from server import *
 from asg import *
 
-
+import time
 
 
 def first_fit(job_name, job_size):
@@ -28,8 +28,10 @@ if __name__ == '__main__':
 
     asgs[0].servers = servers
 
-    print STATUS[0]
-    print PROCESSOR[0]
-
     # for server in asgs[0].get_server_by_status(0):
     #     print server
+    print servers[0]
+    servers[0].do_poweron()
+    print servers[0]
+    servers[0].do_poweroff()
+    print servers[0]
