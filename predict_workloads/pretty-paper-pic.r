@@ -5,7 +5,7 @@
 # https://plot.ly/r/line-and-scatter/
 
 
-setwd("/Users/yuanxu/Developer/autoscale/predict_workloads")
+setwd("/Users/yuanxu/Developer/autoscaling/predict_workloads")
 
 workloads_data <- read.table("data/sample-output.dat", header=T, sep="\t") 
 

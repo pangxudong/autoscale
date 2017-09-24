@@ -28,10 +28,10 @@ if __name__ == '__main__':
 
     asgs[0].servers = servers
 
-    # for server in asgs[0].get_server_by_status(0):
-    #     print server
-    print servers[0]
-    servers[0].do_poweron()
-    print servers[0]
-    servers[0].do_poweroff()
-    print servers[0]
+    offservers = []
+
+    for server in asgs[0].get_server_by_status(0):
+        offservers.append(server)
+
+    # for oss in offservers:
+    #     oss.do_poweron()
