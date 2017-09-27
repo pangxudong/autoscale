@@ -61,3 +61,37 @@ ref: (http://www.wikiwand.com/zh-sg/%E6%B7%B1%E5%BA%A6%E5%8C%85%E6%A3%80%E6%B5%8
 
 深度数据包检测结合了入侵检测系统（IDS）、入侵预防系统（IPS）及状态防火墙等功能[4]。
 
+
+###  Stateless Network Functions
+ref: http://10.3.200.202/cache/13/03/conferences.sigcomm.org/44d5ae6b89335e5eccab0746f632fd9b/p49.pdf
+
+Newly virtualized network functions (like firewalls,
+routers, and intrusion detection systems) should be easy
+to consume. Despite recent efforts to improve their elasticity
+and high availability, network functions continue
+to maintain important flow state, requiring traditional
+development and deployment life cycles. At the same
+time, many cloud-scale applications are being rearchitected
+to be stateless by cleanly pushing application
+state into dedicated caches or backend stores. This state
+separation is enabling these applications to be more
+agile and support the so-called continuous deployment
+model. In this paper, we propose that network functions
+should be similarly redesigned to be stateless. Drawing
+insights from different classes of network functions,
+we describe how stateless network functions can leverage
+recent advances in low-latency network systems to
+achieve acceptable performance. Our Click-based prototype
+integrates with RAMCloud; using NAT as an
+example network function, we demonstrate that we are
+able to create stateless network functions that maintain
+the desired performance.
+
+我的小论文中，使用无状态VNF做实验是简化了模型。假如都是有状态的VNF，scale_in时不能直接关机，而需要先对持久化层做处理。
+
+### 控制平面 数据平面
+ref:  http://blog.csdn.net/kkkkkkkooooooo111/article/details/52319901
+http://sunyongfeng.com/201706/networks/switch/three_panel.html
+
+高端路由器由控制平面control plane和数据平面data plane（也称为转发平面）组成。每个平面都有自己的CPU和内存。控制平面负责执行路由选择协议，管理路由选择处理必备的数据库信息并生成FIB表（Forward Information Base，转发信息库）.FIB信息将会被转发到用于接收传输分组的数据平面中。控制平面和数据平面分离的优点在于，当需要转发的通信量剧增导致数据平面资源枯竭时，虽然无法继续进行分组转发，但对控制平面上的路由选择处理所涉及的资源没有任何影响。同样，当路由选择处理负载剧增导致控制平面资源枯竭时，也不会给数据平面的资源以及分组转发带来任何影响。
+
