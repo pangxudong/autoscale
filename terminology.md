@@ -87,7 +87,12 @@ example network function, we demonstrate that we are
 able to create stateless network functions that maintain
 the desired performance.
 
-我的小论文中，使用无状态VNF做实验是简化了模型。假如都是有状态的VNF，scale_in时不能直接关机，而需要先对持久化层做处理。
+个人理解： 
+
+1) 我的小论文中，使用无状态VNF做实验是简化了模型。假如都是有状态的VNF，scale_in时不能直接关机， 而需要先做迁移或持久化处理再关机。
+
+2) 网络功能(NF)处理的对象是网络数据包， 包括单个包的header和负载。 而一般的软件应用的处理单元往往是应用层的数据格式， 对数据包等网络协议栈完全透明。
+
 
 ### 控制平面 数据平面
 ref:  http://blog.csdn.net/kkkkkkkooooooo111/article/details/52319901
