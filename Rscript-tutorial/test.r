@@ -4,8 +4,11 @@
 library(gdata)
 library(xlsx)
 
+
 setwd("/Users/yuanxu/Downloads/")
-names<-read.xls("yingling.xls",sheet=1,header=F)
+
+# yingling qifu zuxian xueye
+names<-read.xls("xueye.xlsx",sheet=1,header=F)
 
 
 # names is data.frame type
@@ -28,4 +31,4 @@ for (i in 1:nrow(names)) {
 mingdan <- data.frame(mdmatrix)
 
 # write to xls
-write.xlsx(mingdan, file="mingdan.xls")
+write.xlsx(mingdan, file="mingdan-xueye.xls")
