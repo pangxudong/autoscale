@@ -61,6 +61,9 @@ ref: (http://www.wikiwand.com/zh-sg/%E6%B7%B1%E5%BA%A6%E5%8C%85%E6%A3%80%E6%B5%8
 
 深度数据包检测结合了入侵检测系统（IDS）、入侵预防系统（IPS）及状态防火墙等功能[4]。
 
+流行的实现版本：
+- nDPI
+- suricata
 
 ###  Stateless Network Functions
 ref: http://10.3.200.202/cache/13/03/conferences.sigcomm.org/44d5ae6b89335e5eccab0746f632fd9b/p49.pdf
